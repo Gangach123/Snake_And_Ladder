@@ -2,15 +2,16 @@
 
 namespace Snake_And_Ladder
 {
-     class Program
+   internal class Snake_And_Ladder
     {
-        
-
-        public static void GamePlay(string[] args)
+        static void Main(string[] args)
         {
-            //UC_1
-            int position = 0;
-            Console.WriteLine($"Position of the player {position}");
+            //UC_2
+            //int position = 0;
+            Random random = new Random();
+            int noOnDie = random.Next(1, 7);
+            Console.WriteLine($"No on die:{noOnDie}");
         }
     }
 }
+
