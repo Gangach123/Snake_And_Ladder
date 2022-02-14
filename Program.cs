@@ -6,15 +6,15 @@ namespace Snake_And_Ladder
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to snake ladder game");
+            Console.WriteLine("Welcome to Snake And Ladder game");
            
         }
 
         public static void GamePlay()
         {
-            
+            //UC_1
             int position = 0;
-            
+            Random random = new Random();
         }
     }
 }
