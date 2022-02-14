@@ -2,19 +2,15 @@
 
 namespace Snake_And_Ladder
 {
-     class Snake_And_Ladder
+     class Program
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Welcome to Snake And Ladder game");
-           
-        }
+        
 
-        public static void GamePlay()
+        public static void GamePlay(string[] args)
         {
             //UC_1
             int position = 0;
-            Random random = new Random();
+            Console.WriteLine($"Position of the player {position}");
         }
     }
 }
