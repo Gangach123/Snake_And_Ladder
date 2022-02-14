@@ -16,7 +16,7 @@ namespace snake_And_Ladder
             int position = 0;
             Random random = new Random();
 
-            while (position < 100)
+            while (position != 100)
             {
                 int noOnDie = random.Next(1, 7);
                 Console.WriteLine($"No on die :{noOnDie}");
@@ -26,11 +26,15 @@ namespace snake_And_Ladder
                 {
                     case LADDER:
                         position += noOnDie;
+                        int positionofPlayer = position < 0 ? position += noOnDie : position;
+                        Console.WriteLine($"Player position was incrimented :{position}");
+
                         break;
 
                     case SNAKE:
                         position -= noOnDie;
-                        int positionofPlayer = position < 0 ? position += noOnDie : position;
+                        int positionofPlayer1 = position >100  ? position -= noOnDie : position;
+                        Console.WriteLine($"Player position was decrimented :{position}");
                         break;
 
                     case NOPLAY:
@@ -39,7 +43,7 @@ namespace snake_And_Ladder
                 }
 
             }
-           Console.WriteLine("POSITION: " + position);
+           Console.WriteLine("POSITION of the player: " + position);
         }
     }
 
