@@ -12,9 +12,10 @@ namespace snake_And_Ladder
             const int SNAKE = 3;
             const int targetposition = 100;
 
-            //UC_1
+            //Variables
             int position = 0;
             Random random = new Random();
+            int counter = 0;
 
             while (position != 100)
             {
@@ -41,6 +42,7 @@ namespace snake_And_Ladder
                         Console.WriteLine("POSITION: " + position);
                         break;
                 }
+                counter++;
 
             }
            Console.WriteLine("POSITION of the player: " + position);
