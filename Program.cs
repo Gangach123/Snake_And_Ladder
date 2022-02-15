@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace snake_And_Ladder
+﻿namespace snake_And_Ladder
 {
     class snake_And_Ladder
     {
@@ -16,6 +14,9 @@ namespace snake_And_Ladder
             int position = 0;
             Random random = new Random();
             int counter = 0;
+
+            int player1Position = 0;
+            int player2Position = 0;
 
             while (position != 100)
             {
@@ -43,10 +44,23 @@ namespace snake_And_Ladder
                         break;
                 }
                 counter++;
+                int position = 0;
+                int position1 = 0;
+                while (position != targetposition && position1 != targetposition)
+                {
+                    position = Main(position);
+                    position1 = Main(position1);
+                    Console.WriteLine($"PLAYER1 IS AT {player1Position} & PLAYER2 IS AT {player2Position}");
+                }
+                string result = position == targetposition ? ("Player1 Won the game") : ("Player2 won the game");
+                Console.WriteLine(result);
+
 
             }
-           Console.WriteLine("POSITION of the player: " + position);
+            Console.WriteLine("POSITION of the player: " + position);
         }
+         
+
     }
 
 }
