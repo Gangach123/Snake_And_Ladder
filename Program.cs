@@ -6,7 +6,7 @@ namespace Snake_And_Ladder
     {
         
 
-        public static void GamePlay(string[] args)
+        public static void Main(string[] args)
         {
             //UC_1
             int position = 0;
