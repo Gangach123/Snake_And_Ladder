@@ -1,66 +1,60 @@
-﻿namespace snake_And_Ladder
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Game
 {
-    class snake_And_Ladder
+    internal class Program
     {
+        //CONSTANTS
+        const int SNAKE = 1;
+        const int LADDER = 2;
+        const int targetPosition = 100;
+        public static int Getposition(int position)
+        {
+            //VARIABLES
+            Random random = new Random();
+            int chooseOption = random.Next(0, 3);
+            int dieRoll = random.Next(1, 7);
+
+            switch (chooseOption)
+            {
+                case SNAKE:
+                    position -= dieRoll;
+                    position = position < 0 ? position += dieRoll : position;
+                    break;
+                case LADDER:
+                    position += dieRoll;
+                    //For decrementing if player crosses 100 position.
+                    position = position > targetPosition ? position -= dieRoll : position;
+                    //For playing again, if player got at ladder
+                    Getposition(position);
+                    break;
+                default:
+                    position += 0;
+                    Console.WriteLine("NOT PLAYED");
+                    break;
+            }
+            return position;
+        }
         static void Main(string[] args)
         {
-            //Inintializing constant
-            const int LADDER = 1;
-            const int NOPLAY = 2;
-            const int SNAKE = 3;
-            const int targetposition = 100;
+            Console.WriteLine("Welcome to Snake & Ladder game");
 
-            //Variables
-            int position = 0;
-            Random random = new Random();
-            int counter = 0;
+            //VARIABLES
+            int player1 = 0;
+            int player2 = 0;
 
-            int player1Position = 0;
-            int player2Position = 0;
-
-            while (position != 100)
+            while (player1 != targetPosition && player2 != targetPosition)
             {
-                int noOnDie = random.Next(1, 7);
-                Console.WriteLine($"No on die :{noOnDie}");
-
-                int options = random.Next(1, 4);
-                switch (options)
-                {
-                    case LADDER:
-                        position += noOnDie;
-                        int positionofPlayer = position < 0 ? position += noOnDie : position;
-                        Console.WriteLine($"Player position was incrimented :{position}");
-
-                        break;
-
-                    case SNAKE:
-                        position -= noOnDie;
-                        int positionofPlayer1 = position >100  ? position -= noOnDie : position;
-                        Console.WriteLine($"Player position was decrimented :{position}");
-                        break;
-
-                    case NOPLAY:
-                        Console.WriteLine("POSITION: " + position);
-                        break;
-                }
-                counter++;
-                int position = 0;
-                int position1 = 0;
-                while (position != targetposition && position1 != targetposition)
-                {
-                    position = Main(position);
-                    position1 = Main(position1);
-                    Console.WriteLine($"PLAYER1 IS AT {player1Position} & PLAYER2 IS AT {player2Position}");
-                }
-                string result = position == targetposition ? ("Player1 Won the game") : ("Player2 won the game");
-                Console.WriteLine(result);
-
-
+                player1 = Getposition(player1);
+                player2 = Getposition(player2);
+                Console.WriteLine($"PLAYER1 IS AT {player1} & PLAYER2 IS AT {player2}");
             }
-            Console.WriteLine("POSITION of the player: " + position);
+            string result = player1 == targetPosition ? ("Player1 Won the game") : ("Player2 won the game");
+            Console.WriteLine(result);
         }
-         
-
     }
-
 }
